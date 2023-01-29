@@ -45,6 +45,8 @@ pipeline {
         stage(' Integration and Performance Tests') {
           steps {
             sh './mvnw verify'
+            junit '**/target/surefire-reports/TEST-*.xml'
+            perfReport '**/target/jmeter/results/*'
           }
         }
 
